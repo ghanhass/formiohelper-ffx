@@ -15,7 +15,17 @@ var popupUIState;
         if (window.isScriptLoaded)//prevent multiple 
         {
             switch(msgObj.message){
-                case 'extCustomYoutubeStyle': document.dispatchEvent(new Event("domCustomYoutubeStyle"));
+                case 'extCustomYoutubeStyle': 
+                console.log("AA");
+                if(window.youtubeStyleSheet === undefined){
+                    console.log("BB");
+                    window.youtubeStyleSheet = document.createElement("style");
+                    document.head.appendChild(window.youtubeStyleSheet);
+                    let styleSheet = youtubeStyleSheet.sheet;
+                    styleSheet.insertRule("img, iframe{opacity:0.05 !important;}", styleSheet.cssRules.length);
+                    styleSheet.insertRule("#logo{visibility:hidden !important;}", styleSheet.cssRules.length);
+                }
+                //document.dispatchEvent(new Event("domCustomYoutubeStyle"));
                 break;
                 
                 case 'extSaveUIMessage': 

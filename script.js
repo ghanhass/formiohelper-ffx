@@ -100,17 +100,6 @@ var formDataOriginal;
 formioApi = window.Formio;
 console.log('formioApi.forms = ', formioApi.forms);
 
-document.addEventListener("domCustomYoutubeStyle", function(event){ //domCustomYoutubeStyle event's handler
-console.log("AA");
-if(window.youtubeStyleSheet === undefined){
-    console.log("BB");
-    window.youtubeStyleSheet = document.createElement("style");
-    document.head.appendChild(window.youtubeStyleSheet);
-    let styleSheet = youtubeStyleSheet.sheet;
-    styleSheet.insertRule("img, iframe{opacity:0.05 !important;}", styleSheet.cssRules.length);
-    styleSheet.insertRule("#logo{visibility:hidden !important;}", styleSheet.cssRules.length);
-}
-});
 
 
 document.addEventListener("domInitEvent", function(event){ //domInitEvent event's handler

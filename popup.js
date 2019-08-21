@@ -6,11 +6,11 @@ function alertMsg(alertsSpan, msg){
 }
 
 function restoreUI(popupUIState){
-   /* browser.tabs.query({active: true, currentWindow: true}, function(arrTabs){
+    browser.tabs.query({active: true, currentWindow: true}, function(arrTabs){
         let activeTab = arrTabs[0];
         browser.tabs.sendMessage(activeTab.id, JSON.stringify({message: 'extRestoreUIMessage'}));
         console.log('extRestoreUIMessage sent for tab: ', activeTab.id);
-    });*/
+    });
     console.log('inside restoreUI(): popupUIState = ', popupUIState);
     if(popupUIState){
         if(popupUIState.selectedItem){
@@ -52,6 +52,14 @@ function saveUI(){
 
 document.addEventListener('DOMContentLoaded', function(){
     console.log("inside DOMContentLoaded event!");
+    document.querySelector("#custom-youtube").addEventListener("click", (event)=>{
+        chrome.tabs.query({active: true, currentWindow: true}, function(arrTabs){
+            let activeTab = arrTabs[0];
+            chrome.tabs.sendMessage(activeTab.id, JSON.stringify({message: 'extCustomYoutubeStyle'}));
+            //console.log('init message sent for tab: ', activeTab.id);
+        });
+    });
+    
     var isFormFound = false;
     browser.tabs.query({active: true, currentWindow: true}).then((arrTabs)=>{
         let activeTab = arrTabs[0];
